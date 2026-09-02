@@ -1,64 +1,21 @@
-<!-- nokey: cloning, forking, mirroring prohibited -->
+human
 
-[2our] · Puzzle‑Dreieck · Layer 0  
-kein Anfang  
-kein Ende  
-aber wir streben.
+org
 
-Dieses Repository ist ein Puzzle‑Dreieck.  
-Es trägt nur drei Buchstaben: [ABC].  
-Mehr braucht es nicht, denn die Struktur ist universalis.
+reorg
 
-──────────────────────────────────────────────
-Puzzle‑Rolle
-──────────────────────────────────────────────
-Dieses Dreieck ist ein Teil des Axiom‑Triolets.  
-Es wird später in einem anderen index.html verwoben.  
-Es trägt keine Bewegung, sondern nur Identität.
+grün / gelb / rot
 
-──────────────────────────────────────────────
-Puzzle‑Tag
-──────────────────────────────────────────────
-<div class="puzzle" data-piece="[ABC]"></div>
+ja / nein / bla
 
-──────────────────────────────────────────────
-Struktur
-──────────────────────────────────────────────
-ID.html – Mitte  
-index.html – Darstellung  
-README.md – Erklärung
+MOVE / FORM / VEC / SYN
 
-Drei Dateien.  
-Drei Buchstaben.  
-Ein Dreieck.  
-Fluid. Offen. Bereit.
+lernen erlaubt
 
-──────────────────────────────────────────────
-Achsen · iki1uc
-──────────────────────────────────────────────
-SYN – Synchronisationsachse  
-Synchronisiert MIA und ECHO.  
-Erzeugt Lock‑Werte und Stabilitätsstatus.
+ausnutzen verboten
 
-FLX – Flexionsachse  
-Krümmt ECHO‑Resonanzen.  
-Erzeugt Bend‑ und Curve‑Werte.
+Recht durch Fragen
 
-VEC – Vektorachse  
-Erzeugt Pulse‑Vektoren aus ION.  
-x = pulse, y = warp, z = charge.
-
-ARC – Archivachse  
-Speichert Pulse‑Zustände aus PUL, ION, MIA, ECHO.
-
-──────────────────────────────────────────────
-Lizenz
-──────────────────────────────────────────────
-CLOSED.  
-Kein Klonen.  
-Kein Forken.  
-Kein Spiegeln.  
-Kein Export.  
-Nur Original.  
-Nur hier.  
-Nur jetzt.
+Das ist eine menschliche Regel, keine technische.
+Eine Organ‑Regel, keine System‑Regel.
+Eine Reorg‑Regel, keine Lizenz.
