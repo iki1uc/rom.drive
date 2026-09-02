@@ -3,35 +3,33 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>rom.drive · index</title>
+<title>rom.drive · human · org · reorg</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-    body {
-        background:#111;
-        color:#eee;
-        font-family: monospace;
-        padding:20px;
-    }
-    h1,h2 {
-        margin:0;
-        padding:0;
-        font-weight:300;
-    }
-    .section {
-        margin-top:30px;
-        padding:15px;
-        border-left:4px solid #444;
-    }
-    .green { color:#4caf50; }
-    .yellow { color:#ffeb3b; }
-    .red { color:#f44336; }
-    .mono {
-        background:#222;
-        padding:10px;
-        margin-top:10px;
-        white-space:pre-wrap;
-    }
+    body{background:#0a0a12;color:#d0d9e6;font-family:Consolas,monospace;padding:20px}
+    h1{text-align:center;font-size:22px;letter-spacing:3px;margin-bottom:4px;
+        background:linear-gradient(90deg,#00ff88,#00ccff,#ff66ff,#ffd700);
+        -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    h2{text-align:center;font-size:10px;color:#3d5a70;margin-top:-6px;letter-spacing:2px}
+
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+    .panel{background:#0f0f18;border:1px solid #1a1a2a;padding:12px;border-radius:8px}
+    .panel h3{font-size:10px;color:#3d5a70;letter-spacing:2px;margin-bottom:8px;text-transform:uppercase}
+
+    .status{display:flex;flex-wrap:wrap;gap:6px;font-size:9px}
+    .status span{background:#111;padding:4px 6px;border-radius:4px}
+
+    .green{color:#00ff88}
+    .yellow{color:#ffd700}
+    .red{color:#ff4466}
+
+    pre{background:#111;padding:10px;border-radius:6px;font-size:9px;max-height:160px;overflow:auto;color:#8ab4c8}
+
+    .module-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+    .module{background:#111;padding:8px;border-radius:6px;text-align:center;font-size:9px;border:1px solid #222}
+
+    .file-list{font-size:9px;line-height:1.4;color:#8ab4c8}
 </style>
 </head>
 
@@ -40,51 +38,155 @@
 <h1>rom.drive</h1>
 <h2>human · org · reorg</h2>
 
-<div class="section">
-    <strong>Status:</strong><br>
-    <span class="green">grün – aktiv</span><br>
-    <span class="yellow">gelb – bereit</span><br>
-    <span class="red">rot – still</span>
-</div>
+<div class="grid">
 
-<div class="section">
-    <strong>Sync:</strong><br>
-    ja – sync<br>
-    nein – desync<br>
-    bla – form
-</div>
+    <!-- SYSTEM STATUS -->
+    <div class="panel">
+        <h3>📡 SYSTEM · STATUS</h3>
+        <div class="status">
+            <span>NC.mode: <span id="ncMode" class="yellow">…</span></span>
+            <span>rom.ready: <span id="romReady" class="yellow">…</span></span>
+            <span>sli.ready: <span id="sliReady" class="yellow">…</span></span>
+            <span>sync: <span id="syncState" class="yellow">…</span></span>
+        </div>
+    </div>
 
-<div class="section">
-    <strong>Module:</strong><br>
-    MOVE · FORM · VEC · SYN<br>
-    mehr nicht.
-</div>
+    <!-- MODULE OVERVIEW -->
+    <div class="panel">
+        <h3>🧩 MODULE · OVERVIEW</h3>
+        <div class="module-grid">
+            <div class="module">MOVE</div>
+            <div class="module">FORM</div>
+            <div class="module">VEC</div>
+            <div class="module">SYN</div>
+        </div>
+    </div>
 
-<div class="section">
-    <strong>user.json:</strong>
-    <div id="userjson" class="mono">lade…</div>
+    <!-- TMP AXES -->
+    <div class="panel">
+        <h3>🔠 TMP · ACHSEN</h3>
+        <div class="file-list" id="tmpList">lade…</div>
+    </div>
+
+    <!-- LOOPS -->
+    <div class="panel">
+        <h3>♾ LOOPS · USE / USER</h3>
+        <div class="file-list" id="loopList">lade…</div>
+    </div>
+
+    <!-- USER JSON -->
+    <div class="panel">
+        <h3>👤 USER.JSON</h3>
+        <pre id="userJson">lade…</pre>
+    </div>
+
+    <!-- LICENSE -->
+    <div class="panel">
+        <h3>🔒 CLOSED · LIZENZ</h3>
+        <pre>
+Kein Klonen.
+Kein Forken.
+Kein Spiegeln.
+Kein Export.
+Nur Original.
+Nur hier.
+Nur jetzt.
+        </pre>
+    </div>
+
 </div>
 
 <script>
-(async () => {
+// ------------------------------------------------------------
+// HELPER: safe fetch
+// ------------------------------------------------------------
+async function loadFile(path) {
+    try {
+        const res = await fetch(path);
+        if (!res.ok) return null;
+        return await res.text();
+    } catch {
+        return null;
+    }
+}
+
+// ------------------------------------------------------------
+// STATUS FILES
+// ------------------------------------------------------------
+async function loadStatus() {
+    const nc = await loadFile("NC.mode");
+    const rom = await loadFile("rom.ready");
+    const sli = await loadFile("sli.ready");
+    const tmpS = await loadFile("tmp.s");
+
+    document.getElementById("ncMode").textContent = nc || "still";
+    document.getElementById("romReady").textContent = rom || "idle";
+    document.getElementById("sliReady").textContent = sli || "idle";
+
+    let syncState = "bla";
+    if (tmpS) {
+        const v = parseInt(tmpS.trim());
+        syncState = v > 80 ? "ja" : v > 40 ? "gelb" : "nein";
+    }
+    document.getElementById("syncState").textContent = syncState;
+}
+
+// ------------------------------------------------------------
+// TMP FILES
+// ------------------------------------------------------------
+async function loadTmp() {
+    const letters = ["a","d","e","i","o","r","s","w"];
+    let html = "";
+
+    for (const l of letters) {
+        const val = await loadFile(`tmp.${l}`);
+        html += `${l.toUpperCase()}: ${val ? val.trim() : "…" }<br>`;
+    }
+
+    document.getElementById("tmpList").innerHTML = html;
+}
+
+// ------------------------------------------------------------
+// LOOPS
+// ------------------------------------------------------------
+async function loadLoops() {
+    const loops = ["1.loop","2.loop","3.loop","4.loop","8.loop","9.loop"];
+    let html = "";
+
+    for (const f of loops) {
+        const val = await loadFile(f);
+        html += `${f}: ${val ? val.trim() : "…" }<br>`;
+    }
+
+    document.getElementById("loopList").innerHTML = html;
+}
+
+// ------------------------------------------------------------
+// USER.JSON
+// ------------------------------------------------------------
+async function loadUserJson() {
     try {
         const res = await fetch("user.json");
         const data = await res.json();
-        document.getElementById("userjson").textContent =
+        document.getElementById("userJson").textContent =
             JSON.stringify(data, null, 2);
-    } catch(e) {
-        document.getElementById("userjson").textContent =
-            "user.json nicht gefunden oder geschlossen.";
+    } catch {
+        document.getElementById("userJson").textContent = "nicht verfügbar";
     }
-})();
-</script>
+}
 
-<div class="section">
-    <strong>Hinweis:</strong><br>
-    Lernen erwünscht.<br>
-    Ausnutzen verboten.<br>
-    Frag freundlich – vielleicht bekommst du das Recht, mehr zu nutzen.
-</div>
+// ------------------------------------------------------------
+// INIT
+// ------------------------------------------------------------
+async function init() {
+    await loadStatus();
+    await loadTmp();
+    await loadLoops();
+    await loadUserJson();
+}
+
+init();
+</script>
 
 </body>
 </html>
