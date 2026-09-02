@@ -1,5 +1,25 @@
 {
-    "name": "Ridvan",
-    "level": 6,
-    "status": "active"
+  "welcome": "Willkommen im ROM.DRIVE System",
+  "id": "USER-CORE",
+  "role": "mundwerk",
+  "mode": "NC.mode",
+  "loops": [1, 2, 3, 4, 8, 9],
+  "tmp": {
+    "a": true,
+    "d": true,
+    "e": true,
+    "i": true,
+    "o": true,
+    "r": true,
+    "s": true,
+    "w": true
+  },
+  "zone": "c.zone",
+  "input": "in.tmp",
+  "upload": "up.tmp",
+  "help": "help.tmp",
+  "fit": "fit.tmp",
+  "arg": "arg.tmp",
+  "ready": "sli.ready",
+  "created": "2026-09-02"
 }
