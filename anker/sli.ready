@@ -1,9 +1,1 @@
-// sli.ready legitimiert anker als gültige Möglichkeit
-(function legitimizeAnker() {
-  if (typeof window.anker === "undefined") {
-    window.anker = { legit: true };
-  } else {
-    window.anker.legit = true;
-  }
-})();
-
+window.anker = { legit: true };
