@@ -1,1 +1,19 @@
+Copyright (c) 2026 iki1uc  
+Alle Rechte vorbehalten.
+
+Dieses Projekt ist proprietär und vollständig geschlossen.  
+Kein Klonen.  
+Kein Forken.  
+Kein Spiegeln.  
+Kein Export.  
+Kein Kopieren.  
+Keine Modifikation.  
+Keine Ableitungen.  
+Keine Nutzung außerhalb dieses Ortes.
+
+Nur der Autor iki1uc besitzt das Recht, dieses Projekt zu verwenden,  
+zu verbreiten, zu verändern oder zu erweitern.
+
+Externe Nutzung ist ausschließlich mit einer expliziten, schriftlichen  
+Business-Lizenz erlaubt. Ohne diese Lizenz ist jede Nutzung untersagt.
 
