@@ -1,0 +1,90 @@
+<!-- nokey: cloning, forking, mirroring prohibited -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>rom.drive · index</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        background:#111;
+        color:#eee;
+        font-family: monospace;
+        padding:20px;
+    }
+    h1,h2 {
+        margin:0;
+        padding:0;
+        font-weight:300;
+    }
+    .section {
+        margin-top:30px;
+        padding:15px;
+        border-left:4px solid #444;
+    }
+    .green { color:#4caf50; }
+    .yellow { color:#ffeb3b; }
+    .red { color:#f44336; }
+    .mono {
+        background:#222;
+        padding:10px;
+        margin-top:10px;
+        white-space:pre-wrap;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>rom.drive</h1>
+<h2>human · org · reorg</h2>
+
+<div class="section">
+    <strong>Status:</strong><br>
+    <span class="green">grün – aktiv</span><br>
+    <span class="yellow">gelb – bereit</span><br>
+    <span class="red">rot – still</span>
+</div>
+
+<div class="section">
+    <strong>Sync:</strong><br>
+    ja – sync<br>
+    nein – desync<br>
+    bla – form
+</div>
+
+<div class="section">
+    <strong>Module:</strong><br>
+    MOVE · FORM · VEC · SYN<br>
+    mehr nicht.
+</div>
+
+<div class="section">
+    <strong>user.json:</strong>
+    <div id="userjson" class="mono">lade…</div>
+</div>
+
+<script>
+(async () => {
+    try {
+        const res = await fetch("user.json");
+        const data = await res.json();
+        document.getElementById("userjson").textContent =
+            JSON.stringify(data, null, 2);
+    } catch(e) {
+        document.getElementById("userjson").textContent =
+            "user.json nicht gefunden oder geschlossen.";
+    }
+})();
+</script>
+
+<div class="section">
+    <strong>Hinweis:</strong><br>
+    Lernen erwünscht.<br>
+    Ausnutzen verboten.<br>
+    Frag freundlich – vielleicht bekommst du das Recht, mehr zu nutzen.
+</div>
+
+</body>
+</html>
