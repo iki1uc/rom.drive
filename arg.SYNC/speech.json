@@ -1,0 +1,23 @@
+{
+  "welcome": "ROM.DRIVE Sprachsystem aktiviert",
+  "phonems": ["a","d","e","i","n","o","r","s","u","w"],
+  "move": {
+    "air": "AIR6D_MOVE.js",
+    "impulse": "BillyTheKidMove.js",
+    "tor": "TOR.js",
+    "coord": "CO.js",
+    "lage": "LAGE.js",
+    "vector": "vector.js",
+    "triangle": "triangle.js"
+  },
+  "form": {
+    "core": "FORM_CORE.js",
+    "engine": "FORM_ENGINE.js",
+    "matrix": "FORM_MATRIX.js"
+  },
+  "pipeline": "pipeline.js",
+  "sync": "syn.js",
+  "rom": "*.hdf.rom",
+  "ready": "rom.ready",
+  "created": "2026-09-02"
+}
