@@ -1,1 +1,36 @@
-window.anker = { legit: true };
+// sli.ready legitimiert anker als gültige System-Möglichkeit
+(function legitimizeAnker() {
+
+  // Falls anker nicht existiert → Grundstruktur erzeugen
+  if (typeof window.anker === "undefined") {
+    window.anker = {};
+  }
+
+  // 1. Markierung: anker ist eine gültige Option
+  window.anker.legit = true;
+
+  // 2. Klassifizierung: anker ist ein System-Modul
+  window.anker.type = "system";
+
+  // 3. Registrierung: anker besitzt eigene PIPE + pipeline
+  window.anker.capabilities = {
+    pipe: true,
+    pipeline: true,
+    selector: true,     // radom.js
+    acceleration: true, // 1–9.js
+    kernel: true,       // ULTRA_KERNEL
+    nav: true,          // NAV9
+    fusion: true        // FUSION9
+  };
+
+  // 4. Bezug zu API: anker DARF respo243 lesen, aber bleibt unabhängig
+  window.anker.relations = {
+    api: "respo243",
+    mode: "read-only"
+  };
+
+  // 5. Status: anker ist bereit, aber noch nicht gestartet
+  window.anker.ready = true;
+  window.anker.started = false;
+
+})();
